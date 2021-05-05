@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+     crossorigin="anonymous" />
+     <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="container">
+        <h1>todos</h1>
+        <div class="input"><i class="fas fa-angle-down str" ng-click="checkSve()" ng-class="{'fade' :!checked,'hidden': todos.length===0}"></i>
+        <input type="text" placeholder="What needs to be done?" ng-enter="add()" ng-model="task">
+    </div>
+        <ul>
+            <li ng-repeat="todo in todos" ng-class="{'noneee':todo.show===false}">
+                <div class="krug" ng-click="check()"><i class="fas fa-check" ng-class="{'hidden':todo.done===false}"></i></div>
+                <input class="text" contenteditable="true" ng-class="{'crossed':todo.done===true}" ng-value="todo.task">
+                <div class="x"><i class="fas fa-times" ng-click="makni($index)"></i></div>
+            </li>
+        </ul>
+        <div class="donji">
+        <div class="footer">
+            <div class="br">{{broj()}} items left</div>
+            <div class="buttons">
+                <button ng-click="all()">All</button>
+                <button ng-click="active()">Active</button>
+                <button ng-click="completed()">Completed</button>
+            </div>
+            <div class="clear" ng-click="clear()" ng-class="{'hidden': clearShow()}">
+                Clear completed
+            </div>
+        </div>
+        <div class="listovi">
+            <div class="prvi"></div>
+            <div class="drugi"></div>
+        </div>
+    </div>
+    
+
+
+
+    </div>
+</body>
+</html>
